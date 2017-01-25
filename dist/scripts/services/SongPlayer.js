@@ -1,5 +1,5 @@
  (function() {
-     function SongPlayer($rootScope,Fixtures) {
+     function SongPlayer(Fixtures) {
          
 /**
 @function - song player
@@ -20,20 +20,12 @@
 */ 
         
          SongPlayer.currentSong = null;
-         
-          /**
- * @desc Current playback time (in seconds) of currently playing song
- * @type {Number}
- */
-        SongPlayer.currentTime = null;
  /**
  * @desc Buzz object audio file
  * @type {Object}
  */
          
         var currentBuzzObject = null;
-         
-         var SongPlayer.volume = null; 
          
  /**
  * @function setSong
@@ -51,13 +43,7 @@
                  formats: ['mp3'],
                  preload: true
              });
-             
-             currentBuzzObject.bind('timeupdate', function() {
-                 $rootScope.$apply(function() {
-                     SongPlayer.currentTime = currentBuzzObject.getTime();
-                 });
-             });
-
+ 
             SongPlayer.currentSong = song;
         };
 /**
@@ -87,15 +73,6 @@
                  currentBuzzObject.play(); 
                  song.playing = true;
              }
-             
-             SongPlayer.setVolume = function (volume) {
-                 if(SongPlayer.setvolume <= 90){
-                 songPlayer.setVolume(volume) }
-                 else {
-                     songPlayer.setVolume(90);
-                 }
-                 
-             };
 /**
 @function - songplayer.pause
 @desc - public pause song funciton 
@@ -130,8 +107,6 @@
                  playSong(song);
              }
          };
-             
-             on-change="playerBar.songPlayer.setCurrentTime(value)"
 
          };
           return SongPlayer;
