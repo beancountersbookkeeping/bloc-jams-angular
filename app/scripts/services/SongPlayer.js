@@ -33,7 +33,7 @@
          
         var currentBuzzObject = null;
          
-         var SongPlayer.volume = null; 
+         SongPlayer.volume = null; 
          
  /**
  * @function setSong
@@ -130,8 +130,6 @@
                  playSong(song);
              }
          };
-             
-             on-change="playerBar.songPlayer.setCurrentTime(value)"
 
          };
           return SongPlayer;
