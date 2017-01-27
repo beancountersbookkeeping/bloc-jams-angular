@@ -15,7 +15,7 @@
          scope: {
          onChange: '&'
      },
-        link: function(scope, Element, attributes) {
+        link: function(scope, element, attributes) {
             scope.value = 0;
             scope.max = 100;
             
