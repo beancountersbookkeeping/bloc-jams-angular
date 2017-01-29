@@ -1,5 +1,5 @@
 (function() {
-     function SongPlayer(Fixtures) {
+     function SongPlayer($rootScope, Fixtures) {
 
  /**
 @function - song player
@@ -9,7 +9,7 @@
 
     var SongPlayer = {};
     
-   var currentAlbum = Fixtures.getAlbum(); 
+     var currentAlbum = Fixtures.getAlbum(); 
     
      var getSongIndex = function(song) {
         return currentAlbum.songs.indexOf(song);
@@ -72,7 +72,7 @@
          
     SongPlayer.play = function(song) {
         song = song || SongPlayer.currentSong;
-	   if (SongPlayerlayer.currentSong !==song) {
+	   if (SongPlayer.currentSong !==song) {
            setSong(song);
            currentBuzzObject.play(); 
            song.playing = true;
@@ -107,7 +107,7 @@
     SongPlayer.next = function() {
          var currentSongIndex = getSongIndex(SongPlayer.currentSong);
          currentSongIndex++;
-         if (currentSongIndex < 0) {
+         if (currentSongIndex >= 5) {
              currentBuzzObject.stop();
              SongPlayer.currentSong.playing = null;
          } else {
