@@ -10,6 +10,13 @@
     var SongPlayer = {};
     
      var currentAlbum = Fixtures.getAlbum(); 
+         
+ /**
+ * @desc Buzz object audio file
+ * @type {Object}
+ */
+         
+	var currentBuzzObject = null; 
     
      var getSongIndex = function(song) {
         return currentAlbum.songs.indexOf(song);
@@ -22,12 +29,6 @@
 */
     SongPlayer.currentSong = null; 
          
- /**
- * @desc Buzz object audio file
- * @type {Object}
- */
-         
-	var currentBuzzObject = null; 
 
 /**
  * @function setSong
@@ -61,8 +62,10 @@
     });
  
     SongPlayer.currentSong = song;
-    SongPlayer.currentTime = null;
+
  };
+         
+         SongPlayer.currentTime = null;
          
 /**
 @function - play song 

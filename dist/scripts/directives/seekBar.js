@@ -40,12 +40,12 @@
                  return {width: percentString()};
              };  
             scope.thumbstyle = function (){
-                return {width:percentString()};
+                return {left:percentString()};
             };
             scope.onClickSeekBar = function(event) {
              var percent = calculatePercent(seekBar, event);
              scope.value = percent * scope.max;
-                notifyOnChange(scope.value);
+              notifyOnChange(scope.value);
             };
              scope.trackThumb = function() {
                 $document.bind('mousemove.thumb', function(event) {
@@ -55,17 +55,18 @@
                       notifyOnChange(scope.value);
                  });
              });
-         var notifyOnChange = function(newValue) {
-                 if (typeof scope.onChange === 'function') {
-                     scope.onChange({value: newValue});
-                 }
-             };
 
                  $document.bind('mouseup.thumb', function() {
                  $document.unbind('mousemove.thumb');
                  $document.unbind('mouseup.thumb');
              });
          };
+                  var notifyOnChange = function(newValue) {
+                 if (typeof scope.onChange === 'function') {
+                     scope.onChange({value: newValue});
+                 }
+             };      
+
                 }  
         };
      }
