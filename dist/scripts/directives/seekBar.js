@@ -39,7 +39,7 @@
              scope.fillStyle = function() {
                  return {width: percentString()};
              };  
-            scope.thumbstyle = function (){
+            scope.thumbStyle = function (){
                 return {left:percentString()};
             };
             scope.onClickSeekBar = function(event) {
@@ -47,21 +47,21 @@
              scope.value = percent * scope.max;
               notifyOnChange(scope.value);
             };
-             scope.trackThumb = function() {
+            scope.trackThumb = function() {
                 $document.bind('mousemove.thumb', function(event) {
-                 var percent = calculatePercent(seekBar, event);
-                scope.$apply ( function() {
-                     scope.value = percent * scope.max;
-                      notifyOnChange(scope.value);
-                 });
-             });
+                    var percent = calculatePercent(seekBar, event);
+                    scope.$apply ( function() {
+                        scope.value = percent * scope.max;
+                        notifyOnChange(scope.value);
+                    });
+                });
+                $document.bind('mouseup.thumb', function() {
+                    $document.unbind('mousemove.thumb');
+                    $document.unbind('mouseup.thumb');
+                });
+            };
 
-                 $document.bind('mouseup.thumb', function() {
-                 $document.unbind('mousemove.thumb');
-                 $document.unbind('mouseup.thumb');
-             });
-         };
-                  var notifyOnChange = function(newValue) {
+            var notifyOnChange = function(newValue) {
                  if (typeof scope.onChange === 'function') {
                      scope.onChange({value: newValue});
                  }
