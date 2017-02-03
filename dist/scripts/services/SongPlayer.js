@@ -155,8 +155,14 @@
           currentBuzzObject.setVolume(volume)
       }  
     };
+     SongPlayer.mute = function(volume) {
+         if(currentBuzzObject){
+             currentBuzzObject.setVolume(0);
+         }
+     };
           return SongPlayer;
      }
+    
  
      angular
          .module('blocJams')
